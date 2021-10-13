@@ -129,37 +129,6 @@ h5:hover{
 
 
 
-/* *****************************
-** Mobile Design
-***************************** */
-
-
-@media (max-width: 768px){
-
-#answer{
-  width:90%;
-  display: flex;
-  
-}
-#answer ul{
-  display: flex;
-  
-  margin:auto;
-  
-}
-
-#answer ul li {
-  font-weight: normal;
-  width:40%;
-  height:fit-content;
-  
-}
-
-#answer li:hover{
-  background-color: black;
-}
-
-}
 
 
 
@@ -230,3 +199,54 @@ a{
 font-size: 4em;
 }
 
+
+
+
+/* *****************************
+** Mobile Design
+***************************** */
+
+
+@media (max-width: 768px){
+
+#answer{
+  width:90%;
+  display: flex;
+  
+}
+#answer ul{
+  display: flex;
+  
+  margin:auto;
+  
+}
+
+#answer ul li {
+  font-weight: normal;
+  width:40%;
+  height:fit-content;
+  
+}
+
+#answer li:hover{
+  background-color: black;
+}
+
+#modal-text{
+  width:100%;
+  height:100%;
+}
+
+#wmodal-text{
+  width:100%;
+  height:100%;
+  
+}
+#wmodal p{
+  font-size:2em;
+}
+
+
+
+
+}
