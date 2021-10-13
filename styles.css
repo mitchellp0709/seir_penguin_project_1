@@ -27,8 +27,13 @@ h5{
   width:fit-content;
   font-size: 1.25em;
   color:white;
-  position: relative;
+  position: absolute;
+  right:2%;
+  top:-5%;
   
+}
+h5:hover{
+  cursor:pointer
 }
 
 
@@ -122,3 +127,33 @@ h5{
 
 
 
+
+/* *****************************
+** Mobile Design
+***************************** */
+
+
+@media (max-width: 768px){
+
+#answer{
+  width:90%;
+  
+}
+
+#answer ul li {
+  font-weight: normal;
+  width:40%;
+}
+
+#answer li:hover{
+  background-color: black;
+}
+
+
+
+
+
+
+
+
+}

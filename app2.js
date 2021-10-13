@@ -101,9 +101,13 @@ const backgroundImgURLs = {
 
 
 
-
-
-
+$("h5").on("click", (event) => {
+  event.preventDefault()
+  console.log(event)
+  state.p1 = 0
+  state.p2 = 0
+  state.which=true
+})
 
 
 
