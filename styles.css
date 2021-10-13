@@ -17,7 +17,10 @@ body {
 
 h1 {
   text-align: center;
-  color: blue;
+  color: white;
+  background-color:black;
+  width:fit-content;
+  margin:auto;
 }
 
 
@@ -28,14 +31,16 @@ h1 {
 
 
 #question{
-  width: 70%;
-  color:red;
-  border: 3px solid blue;
-  padding:30px;
-  background-color: rgb(122, 174, 122);
+  width: fit-content;
+  height:fit-content;
+  color:white;
+  border: 3px solid rgb(0,0,0,.5);
+  background-color: rgb(0, 0, 0, .5);
+  padding:20px;
   font-size:28px;
-  margin:10px auto;
+  margin:50px auto;
   text-align: center;
+  font-weight: bold;
 }
 
 /* *****************************
@@ -45,13 +50,20 @@ h1 {
 
 #answer{
   width: 50%;
-  margin: 10px auto;
+  margin: 50px auto;
   color:white;
-  background-color: red;
+  border: 3px solid rgb(0,0,0,.5);
+  background-color: rgb(0, 0, 0, .5);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px
+  padding: 10px
+}
+
+#answer li:hover{
+  background-color:red;
+  cursor:pointer;
+
 }
 
 #answer ul{
@@ -60,7 +72,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-around;
   list-style: none;
-
+  
 }
 
 #answer ul li {
@@ -80,22 +92,25 @@ h1 {
 
 #scores {
   display: flex;
-  width:70%;
-  background-color: blue;
-  color:white;
+  width:fit-content;
+   color:white;
+  border: 3px solid rgb(14, 3, 3);
+  background-color: rgba(191, 11, 11, 0.913);
   justify-content: center;
   margin: 10px auto;
 }
 
 #player1, #player2 {
   width: 40%;
-  background-color: red;
+  background-color: rgb(66, 112, 169);
   margin: 5px;
   text-align: center;
 
 }
 
-
+#player1 h3{
+  background-color: green;
+}
 
 
 
