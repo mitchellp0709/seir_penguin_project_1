@@ -15,7 +15,7 @@ body {
 ***************************** */
 
 
-h1 {
+#title {
   text-align: center;
   color: white;
   background-color:black;
@@ -152,17 +152,81 @@ h5:hover{
   font-weight: normal;
   width:40%;
   height:fit-content;
+  
 }
 
 #answer li:hover{
   background-color: black;
 }
 
-
-
-
-
-
-
-
 }
+
+
+
+
+/* *****************************
+** First Modal
+***************************** */
+
+#modal{
+  background-color: white;
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  z-index: 1;
+  overflow:auto;
+  
+}
+
+#modal-text{
+  text-align: center;
+  height: 350px;
+  width: 550px;
+  border-radius: 2px;
+  margin:100px auto;
+  padding:10px;
+  box-shadow: 0 2px 2px red;
+  background-color:black;
+  color:white;
+}
+a{
+  color:red;
+}
+
+
+
+
+/* *****************************
+** Winning Modal
+***************************** */
+#wmodal{
+  background-color: white;
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  z-index: 5;
+  overflow:auto;
+  display:none;
+}
+
+#wmodal-text{
+  text-align: center;
+  height: 350px;
+  width: 550px;
+  border-radius: 2px;
+  margin:150px auto;
+  padding:10px;
+  box-shadow: 0 2px 2px red;
+  background-color:black;
+  color:white;
+  
+}
+
+#wmodal p{
+font-size: 4em;
+}
+
