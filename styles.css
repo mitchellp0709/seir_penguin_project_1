@@ -1,3 +1,15 @@
+/* ********************************
+** Background
+******************************** */
+body {
+  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+}
+
+
+
 /* *****************************
 ** Heading
 ***************************** */
@@ -80,7 +92,7 @@ h1 {
   background-color: red;
   margin: 5px;
   text-align: center;
-  
+
 }
 
 

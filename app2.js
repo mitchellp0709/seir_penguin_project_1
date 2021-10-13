@@ -13,10 +13,69 @@ const state = {
   which: true,
 };
 
+const backgroundImgURLs = {
+  0: 'url("https://media.istockphoto.com/photos/tennis-rackets-and-balls-leaned-against-the-net-picture-id1171084311?k=20&m=1171084311&s=612x612&w=0&h=5gTGOsXlkZkSggxRnxbevqt80mKf12xT6GXUC6MN_Qc=")',
+
+  1: 'url("https://static0.srcdn.com/wordpress/wp-content/uploads/2019/09/bikini-bottom.png")',
+
+  2: 'url("https://wallpaperaccess.com/full/793421.jpg")',
+
+  3: 'url("https://wallpapercave.com/wp/wp6025656.jpg")',
+
+  4: 'url("https://wallpaperaccess.com/full/202054.jpg")',
+
+  5: 'url("https://wallpaperaccess.com/full/37639.jpg")',
+
+  6: 'url("https://www.thoughtco.com/thmb/EdSHeAblTXlLPZ_d_AXX_ddggg0=/1025x1025/filters:no_upscale():max_bytes(150000):strip_icc()/Mute-swans-56a27c773df78cf77276984f.jpg")',
+
+  7: 'url("https://cutewallpaper.org/21/beaver-wallpaper/American-Beaver-Bing-Wallpaper-Download.jpg")',
+
+  8: 'url("https://nerdist.com/wp-content/uploads/2020/08/7205314-sevenj.jpg")',
+
+  9: 'url("https://media1.popsugar-assets.com/files/thumbor/JtA7H7eMZSdKSIhSvEPVmgvJRnU/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/04/08/956/n/1922507/4dadda3b58741b2d_bob_s_burgers/i/Bob-Burgers-Zoom-Background.png")',
+
+  10: 'url("https://cdn-1.motorsport.com/static/img/amp/4900000/4980000/4986000/4986300/4986332/s6_1001214/1001214.jpg")',
+
+  11: 'url("https://www.wipremiertrivia.com/wp-content/uploads/2018/09/NFL-Wallpaper.jpg")',
+
+  12: 'url("https://upload.wikimedia.org/wikipedia/commons/6/66/Wilfredintertitle.png")',
+
+  13: 'url("https://images5.alphacoders.com/668/thumb-1920-668183.jpg")',
+
+  14: 'url("https://i.pinimg.com/originals/f3/a9/c7/f3a9c7b5ede76621b0fe02dc4edddded.png")',
+
+  15: 'url("https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/01/skyrim-finally-awake-memes-featured-Cropped.jpg?q=50&fit=contain&w=943&h=496&dpr=1.5")',
+
+  16: 'url("https://wallpapercave.com/wp/THWKvXb.jpg")',
+
+  17: 'url("https://www.wallpapertip.com/wmimgs/72-729918_halo-artwork-forerunner-art-design-walls-data-src.jpg")',
+
+  18: 'url("https://media.istockphoto.com/photos/crocodile-head-isolated-close-up-on-a-green-background-picture-id1204016813")',
+
+  19: 'url("https://wallpaperaccess.com/full/2933522.jpg")',
+};
+
+
+
+
+
+
+
+// const setBackground = () => {
+//   if (randomIndex >= 0) {
+//     $("body").css(
+//       "background-image",
+//       'url("https://cdn.theatlantic.com/thumbor/Vl4uNVzj4DfbCTtV_B31SSdnRwA=/0x0:3840x2160/1600x900/media/img/mt/2018/09/BoJack_Horseman_S05E01_21m31s30960f/original.jpg")'
+//     );
+//   }
+// }
+
+
+
+
 const chooseAnswer = (event,question) => {
   
   if (event.target.innerText === question.answer) {
-    console.log("correct")
     if (state.which) {
       state.p1++
       state.which = !state.which
@@ -41,6 +100,9 @@ const setBoard = (q) => {
   const randomIndex = Math.floor(Math.random() * q.length)
   const randomQuestion = q[randomIndex]
 
+ 
+   $("body").css("background-image",backgroundImgURLs[randomIndex])
+   
 
   //Update the question and answer choices on the board.
   $question.text(randomQuestion.question)
