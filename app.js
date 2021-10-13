@@ -5,29 +5,64 @@ const $c = $("#c");
 const $d = $("#d");
 const $p1Score=$("#player1 h4")
 const $p2Score = $("#player2 h4")
-console.log($p1Score)
 
 
-const reset = {
+
+const state = {
   p1: 0,
   p2: 0,
-  currentQuestion: {}
+  currentQuestion: {},
+  which: true
 }
 
 //Gets user click and checks if it is correct
 
-const chooseAnswer = (event, qData) => {
-  const chosenAnswer = event.target.innerText
-  const correctAnswer = qData.answer
+// const chooseAnswer = (event, qData) => {
+//   let chosenAnswer = event.target.innerText
+//   let correctAnswer = qData.answer
   
-  if (chosenAnswer === correctAnswer) {
-    console.log("correct")
+//   // if (chosenAnswer == correctAnswer) {
+//   //   if (state.which) {
+//   //     state.p1++
+//   //     state.which = !state.which;
+//   //   } else {
+//   //     state.p2++;
+//   //     state.which = !state.which;
+//   //   }
+//   // } else{state.which = !state.which}
+//   // setUp(qa)
+//   //state.which != state.which;
+  
+//   console.log(correctAnswer)
+//   if (chosenAnswer === correctAnswer) {
+//     console.log("correct")
+//     setUp(qa);
+//   } else {
+//     console.log("incorrect")  
+//     setUp(qa);
+//   }
+//   console.log(qData)
+  
+
+// }
+
+
+
+//Retry of the choose answer function
+
+const chooseAnswer = (event, question) => {
+  console.log(event)
+  if (event.target.innerText === question.answer) {
   } else {
-    console.log("incorrect")
+    setUp(qa)
   }
-
-
 }
+
+
+
+
+
+
 
 
 
@@ -36,9 +71,13 @@ const chooseAnswer = (event, qData) => {
 
 
 //Function tosets the board with a random question and answer
+
 const setUp = (quest) => {
-  const randQ = Math.floor(Math.random() * quest.length)
-  const randomQuestion = qa[randQ]
+  //Creates random index based on number of questions
+  let randQ = Math.floor(Math.random() * quest.length)
+  //Creates a random question based on the random index
+  let randomQuestion = qa[randQ]
+  //Sets the game with parts of the random question
   $question.text(randomQuestion.question)
   $a.text(randomQuestion.a)
   $b.text(randomQuestion.b);
@@ -46,18 +85,24 @@ const setUp = (quest) => {
   $d.text(randomQuestion.d);
 
 
-  $p1Score.text(reset.p1)
-  $p2Score.text(reset.p2)
+  $p1Score.text(state.p1)
+  $p2Score.text(state.p2)
 
   
-
   $("li").on("click", (event) => {
-    chooseAnswer(event,randomQuestion)
-  })
+  chooseAnswer(event, randomQuestion)
+})
+
+
+
+// $("li").on("click", (chooseAnswer) => {
+//   chooseAnswer(event, randomQuestion);
+// });
   
-  
+
 }
 
+  
 
 
 
@@ -71,13 +116,9 @@ const URL = "https://cdn.contentful.com/spaces/b4lrd0mzlolr/environments/master/
 $.ajax(URL)
   .then((data) => {
    
+    //Grabs data as an array of objects and stores them in variable qa
     qa = data.items.map((q)=>q.fields)
     console.log(qa)
-
-
-    
-    
-     console.log(qa);
 
    setUp(qa);
   
