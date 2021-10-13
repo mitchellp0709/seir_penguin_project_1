@@ -9,7 +9,6 @@ const $p2Score = $("#player2 h4");
 const state = {
   p1: 0,
   p2: 0,
-  currentQuestion: {},
   which: true,
 };
 
@@ -103,10 +102,11 @@ const backgroundImgURLs = {
 
 $("h5").on("click", (event) => {
   event.preventDefault()
-  console.log(event)
   state.p1 = 0
   state.p2 = 0
-  state.which=true
+  state.which = true
+  $p1Score.text(state.p1);
+  $p2Score.text(state.p2);
 })
 
 
