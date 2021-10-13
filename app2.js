@@ -1,3 +1,5 @@
+//Creates variables of what I'll use most often in the code
+
 const $question = $("#question");
 const $a = $("#a");
 const $b = $("#b");
@@ -6,6 +8,7 @@ const $d = $("#d");
 const $p1Score = $("#player1 h4");
 const $p2Score = $("#player2 h4");
 
+//Beginning state of the game
 const state = {
   p1: 0,
   p2: 0,
@@ -19,7 +22,7 @@ const state = {
 
 
 
-
+//Background image URLs & incorrect response text object to be used in functions
   const backgroundImgURLs = {
     0: ['url("https://media.istockphoto.com/photos/tennis-rackets-and-balls-leaned-against-the-net-picture-id1171084311?k=20&m=1171084311&s=612x612&w=0&h=5gTGOsXlkZkSggxRnxbevqt80mKf12xT6GXUC6MN_Qc=")', "Tennis scores go Love, 15, 30, 40, game."],
 
@@ -67,6 +70,8 @@ const state = {
 $(".close").on("click", () => {
   $("#modal").hide()
   $("#wmodal").hide()
+  //Gives no maximum limit if users just push close
+  maxPoints=Infinity
 })
 
 
@@ -74,7 +79,8 @@ $(".close").on("click", () => {
 
 //Allows users to choose how many points they need to win!
 let maxPoints = null
-$("button").on("click",()=> {
+$("button").on("click", () => {
+  
   maxPoints = $("input").val()
   
   $("#modal").hide()
@@ -83,36 +89,45 @@ $("button").on("click",()=> {
 })
 
 //Creates button functionality to play again
-$("#play-again").on("click",()=> {
+$("#play-again").on("click", () => {
+  //Hides modals
   $("#wmodal").hide()
   $("#modal").show()
+  //Resets the state object
   state.p1 = 0;
   state.p2 = 0;
   state.which = true;
+  //Displays the reset state object
   $p1Score.text(state.p1);
   $p2Score.text(state.p2);
+  
 })
 
 
 
 
-
+//Creates a reset button 
   $("h5").on("click", (event) => {
-    event.preventDefault()
-    state.p1 = 0
-    state.p2 = 0
-    state.which = true
+    event.preventDefault();
+    //Resets the state object
+    state.p1 = 0;
+    state.p2 = 0;
+    state.which = true;
+    //Displays the reset state object
     $p1Score.text(state.p1);
     $p2Score.text(state.p2);
-    $("#modal").show()
+    //Shows first modal for users to choose winning amount of points
+    $("#modal").show();
+    
   })
 
 
 
-
+//Uses the user-inputted winning score and pops up a victory modal when that score is reached
 const winningModal = (score1, score2) => {
   if (score1 >= maxPoints || score2 >= maxPoints) {
     $("#wmodal").show()
+    //Populates the winning modal with who won
     if (state.p1 > state.p2) {
       $("#wmodal p").text("Congratulations, player 1 wins!");
     } else {
@@ -125,51 +140,62 @@ const winningModal = (score1, score2) => {
 
 
 
-  const popup = (event) => {
-    if (event.target.innerText === question.answer) {
-      alert("Correct! ");
-    } else {
-      alert("Incorrect");
-    }
+  // const popup = (event) => {
+  //   if (event.target.innerText === question.answer) {
+  //     alert("Correct! ");
+  //   } else {
+  //     alert("Incorrect");
+  //   }
 
 
-  }
+  // }
 
 
-
+//Function that takes an event, the question array, and an index
   const chooseAnswer = (event, question, ind) => {
-  
+    //alerts correct if the correct answer is chosen
     if (event.target.innerText === question.answer) {
       alert("Correct!")
+      
       if (state.which) {
+        //Changes the player whose turn it is background color to green, and the player whose turn it is not back to blue
         $("#player2 h3").css("background-color", "green")
         $("#player1 h3").css("background-color", "rgb(66, 112, 169)");
+        //adds a point to player 1's score if it's their turn
         state.p1++
+        //changes turns
         state.which = !state.which
       } else {
+        //Same exact as above, but activates if it is player 2's turn
         $("#player1 h3").css("background-color", "green");
         $("#player2 h3").css("background-color", "rgb(66, 112, 169)");
         state.p2++;
         state.which = !state.which;
       }
+      //resets the board
       setBoard(questions)
     } else {
+      //Alerts that the wrong answer was chosen and gives some background knowledge and/or a quote from the object above
       alert("Sorry, the correct answer was " + question.answer + ". " + backgroundImgURLs[ind][1])
+      //Resets board
       setBoard(questions)
       state.which = !state.which;
     }
+    //Updates the victory modal that is hidden until a score is reached
     winningModal(state.p1, state.p1);
 
   }
 
 
 
+  //Sets the board
+const setBoard = (q) => {
+    //Creates a random index based on the length of questions
+  const randomIndex = Math.floor(Math.random() * q.length)
+  //Chooses a question based on the random index
+  const randomQuestion = q[randomIndex]
 
-  const setBoard = (q) => {
-    const randomIndex = Math.floor(Math.random() * q.length)
-    const randomQuestion = q[randomIndex]
-
- 
+    //Changes the background based on the index chosen. URL's are from the object above.
     $("body").css("background-image", backgroundImgURLs[randomIndex][0])
  
    
@@ -184,7 +210,7 @@ const winningModal = (score1, score2) => {
     $p1Score.text(state.p1);
     $p2Score.text(state.p2);
 
-
+    //Calls the chooseAnswer function above
     $("li").off()
     $("li").on("click", (event) => {
       chooseAnswer(event, randomQuestion, randomIndex)
@@ -201,15 +227,19 @@ const winningModal = (score1, score2) => {
 
 
 
-
+  //Initializes the question variable
   let question = [];
-
+  //URL of the data
   const URL =
     "https://cdn.contentful.com/spaces/b4lrd0mzlolr/environments/master/entries?access_token=Fwvz9mWot0msbZT5yWf1Yfai9j1y0rGajVA1bU2DtBg&content_type=triviaQuestions";
-  $.ajax(URL).then((data) => {
-    questions = data.items.map((q) => q.fields);
+    //Calls the data with the ajax function
+$.ajax(URL).then((data) => {
+    //Maps over the data and returns an object of arrays that contain the questions, answer choices, and correct answer
+  questions = data.items.map((q) => q.fields);
+  //console logs the data and questions for my reference
     console.log(data);
-    console.log(questions);
+  console.log(questions);
+  //Activates the setBoard function with the array of objects.
     setBoard(questions);
 
   });
