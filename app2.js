@@ -15,7 +15,7 @@ const state = {
   which: true,
 };
 
-
+let questions = []
 
 
 
@@ -187,11 +187,24 @@ const winningModal = (score1, score2) => {
   }
 
 
-
+var indexLog = []
   //Sets the board
 const setBoard = (q) => {
     //Creates a random index based on the length of questions
-  const randomIndex = Math.floor(Math.random() * q.length)
+  let randomIndex = Math.floor(Math.random() * q.length)
+ 
+  
+  while (indexLog.indexOf(randomIndex) !== -1) {
+    randomIndex = Math.floor(Math.random() * q.length);
+    console.log(randomIndex)
+  }
+  indexLog.push(randomIndex);
+  if (indexLog.length === q.length) {
+  indexLog = [];
+  }
+
+
+
   //Chooses a question based on the random index
   const randomQuestion = q[randomIndex]
 
@@ -233,13 +246,15 @@ const setBoard = (q) => {
   const URL =
     "https://cdn.contentful.com/spaces/b4lrd0mzlolr/environments/master/entries?access_token=Fwvz9mWot0msbZT5yWf1Yfai9j1y0rGajVA1bU2DtBg&content_type=triviaQuestions";
     //Calls the data with the ajax function
-$.ajax(URL).then((data) => {
+$.ajax(URL)
+  .then((data) => {
     //Maps over the data and returns an object of arrays that contain the questions, answer choices, and correct answer
-  questions = data.items.map((q) => q.fields);
+    questions = data.items.map((q) => q.fields);
   //console logs the data and questions for my reference
     console.log(data);
-  console.log(questions);
+    console.log(questions);
   //Activates the setBoard function with the array of objects.
     setBoard(questions);
 
-  });
+  }
+);
