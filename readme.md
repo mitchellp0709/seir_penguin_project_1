@@ -20,5 +20,7 @@ My biggest challenge was getting the trivia game to work in the console, then ex
 
 I had a lot of trouble with my game double couting inputs and running through multiple questions every time a user clicked an answer. This was fixed by using the off() command in jQuery. I had some trouble getting my game to work with user-inputted score limits and making my modals. 
 
+I also struggled to get my program to not repeat questions. I went through several different possible solutions, all of which just seemed to lock up my program. After trying several different solutions, Alex B and I relaized that the issue was that my random index variable was a constant variable, and thus couldn't be changed. After changing it to let, my solution ran immediatly and without issue. 
+
 
 
