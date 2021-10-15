@@ -182,7 +182,7 @@ const winningModal = (score1, score2) => {
       state.which = !state.which;
     }
     //Updates the victory modal that is hidden until a score is reached
-    winningModal(state.p1, state.p1);
+    winningModal(state.p1, state.p2);
 
   }
 
